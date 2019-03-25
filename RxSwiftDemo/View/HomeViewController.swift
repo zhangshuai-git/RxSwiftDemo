@@ -67,7 +67,7 @@ class HomeViewController: BaseViewController {
     
     override func makeConstraints() -> Void {
         topView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.snp.topMargin)
+            make.top.equalTo(self.topLayoutGuide.snp.bottom)
             make.left.right.equalToSuperview()
         }
         
@@ -86,7 +86,7 @@ class HomeViewController: BaseViewController {
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(topView.snp.bottom)
             make.left.right.equalToSuperview()
-            make.bottom.equalTo(view.snp.bottomMargin)
+            make.bottom.equalTo(self.bottomLayoutGuide.snp.top)
         }
     }
     
