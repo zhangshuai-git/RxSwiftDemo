@@ -33,6 +33,7 @@
 		ECB6D89121BFCBB200017274 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB6D89021BFCBB200017274 /* Model.swift */; };
 		ECB6D89521BFD77500017274 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB6D89421BFD77500017274 /* HomeViewModel.swift */; };
 		ECB6D89721C096CC00017274 /* Moya+HandyJSON+ZSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB6D89621C096CC00017274 /* Moya+HandyJSON+ZSExtension.swift */; };
+		ECE4A583224B91C400A0E69B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE4A582224B91C400A0E69B /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		ECB6D89021BFCBB200017274 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		ECB6D89421BFD77500017274 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		ECB6D89621C096CC00017274 /* Moya+HandyJSON+ZSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+HandyJSON+ZSExtension.swift"; sourceTree = "<group>"; };
+		ECE4A582224B91C400A0E69B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				EC1B9D9421BE87CA000E2C5B /* MJRefreshHeader+Rx.swift */,
 				EC1B9D9021BE8796000E2C5B /* MJRefreshFooter+Rx.swift */,
 				ECB6D89621C096CC00017274 /* Moya+HandyJSON+ZSExtension.swift */,
+				ECE4A582224B91C400A0E69B /* UIColor+Extension.swift */,
 			);
 			path = ZSExtension;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				ECB0803221C2032400ED8548 /* NetworkAPI.swift in Sources */,
 				EC1B9D8B21BE86CF000E2C5B /* UITableView+ZSExtension.swift in Sources */,
 				EC03452021E87CB800DDC12C /* FavouritesViewController.swift in Sources */,
+				ECE4A583224B91C400A0E69B /* UIColor+Extension.swift in Sources */,
 				EC1B9D8F21BE8765000E2C5B /* MJRefreshComponent+Rx.swift in Sources */,
 				EC021E9F21F0102B0058F9E3 /* DatabaseService.swift in Sources */,
 				EC1B9D8321BE8690000E2C5B /* BaseViewController.swift in Sources */,

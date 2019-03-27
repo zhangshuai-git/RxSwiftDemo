@@ -8,6 +8,8 @@
 
 import Foundation
 
+let MAIN_COLOR: Int64 = 0xe18996
+
 func print<T>(_ message: T, tag: String? = nil, filePath: String = #file, methodName: String = #function, lineNumber: Int = #line) {
     #if DEBUG
     let formatter = DateFormatter()

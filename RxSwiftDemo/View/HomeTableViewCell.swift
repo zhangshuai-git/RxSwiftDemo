@@ -34,11 +34,10 @@ class HomeTableViewCell: BaseTableViewCell {
     
     lazy var actionBtn: UIButton = {
         let button = UIButton()
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.backgroundColor = UIColor.mainColor
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.layer.borderColor = UIColor.darkGray.cgColor
-        button.layer.borderWidth = 1
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         return button
     }()

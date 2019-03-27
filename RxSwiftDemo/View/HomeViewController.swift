@@ -46,10 +46,10 @@ class HomeViewController: BaseViewController {
     lazy var actionBtn: UIButton = {
         let button = UIButton()
         button.setTitle("Favourites", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(UIColor.mainColor, for: .normal)
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.layer.borderColor = UIColor.darkGray.cgColor
+        button.layer.borderColor = UIColor.mainColor.cgColor
         button.layer.borderWidth = 1
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         return button
@@ -141,9 +141,24 @@ class HomeViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        searchBar.rx.textDidBeginEditing
+            .asObservable()
+            .bind { [weak self] in guard let `self` = self else { return }
+                self.searchBar.showsCancelButton = true
+            }
+            .disposed(by: disposeBag)
+        
+        searchBar.rx.textDidEndEditing
+            .asObservable()
+            .bind { [weak self] in guard let `self` = self else { return }
+                self.searchBar.showsCancelButton = false
+            }
+            .disposed(by: disposeBag)
+        
         let searchAction: Observable<String> = searchBar.rx.text.orEmpty
             .debounce(1.0, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
+            .share()
         
         let headerAction: Observable<String> = tableView.mj_header.rx.refreshing
             .asObservable()
@@ -156,6 +171,13 @@ class HomeViewController: BaseViewController {
         let refrashAction: Observable<Void> = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .asObservable()
             .map { _ in () }
+        
+        Observable
+            .merge(searchAction.map{_ in }, searchBar.rx.cancelButtonClicked.asObservable(), tableView.rx.didScroll.asObservable())
+            .bind { [weak self] _ in
+                self?.searchBar.endEditing(true)
+            }
+            .disposed(by: disposeBag)
         
         viewModel.activate((searchAction: searchAction, headerAction: headerAction, footerAction: footerAction, refrashAction: refrashAction))
     }
