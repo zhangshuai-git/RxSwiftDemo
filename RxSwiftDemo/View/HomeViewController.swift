@@ -32,6 +32,8 @@ class HomeViewController: BaseViewController {
     
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
+        searchBar.placeholder = "搜索"
+        searchBar.returnKeyType = .done
         return searchBar
     }()
     
@@ -158,7 +160,6 @@ class HomeViewController: BaseViewController {
         let searchAction: Observable<String> = searchBar.rx.text.orEmpty
             .debounce(1.0, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .share()
         
         let headerAction: Observable<String> = tableView.mj_header.rx.refreshing
             .asObservable()
@@ -173,7 +174,11 @@ class HomeViewController: BaseViewController {
             .map { _ in () }
         
         Observable
-            .merge(searchAction.map{_ in }, searchBar.rx.cancelButtonClicked.asObservable(), tableView.rx.didScroll.asObservable())
+            .merge(
+                searchBar.rx.searchButtonClicked.asObservable(),
+                searchBar.rx.cancelButtonClicked.asObservable(),
+                tableView.rx.didScroll.asObservable()
+            )
             .bind { [weak self] _ in
                 self?.searchBar.endEditing(true)
             }
