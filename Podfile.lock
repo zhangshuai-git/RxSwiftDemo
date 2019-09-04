@@ -1,36 +1,34 @@
 PODS:
-  - Alamofire (4.8.0)
+  - Alamofire (4.8.2)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - HandyJSON (4.2.1)
-  - MJRefresh (3.1.15.7)
-  - Moya/Core (12.0.1):
+  - HandyJSON (5.0.0)
+  - MJRefresh (3.2.0)
+  - Moya/Core (13.0.1):
     - Alamofire (~> 4.1)
-    - Result (~> 4.0)
-  - Moya/RxSwift (12.0.1):
+    - Result (~> 4.1)
+  - Moya/RxSwift (13.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
-  - Result (4.0.0)
-  - RxAtomic (4.4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
-  - SDWebImage (4.4.2):
-    - SDWebImage/Core (= 4.4.2)
-  - SDWebImage/Core (4.4.2)
+  - Result (4.1.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
+  - SDWebImage (5.1.0):
+    - SDWebImage/Core (= 5.1.0)
+  - SDWebImage/Core (5.1.0)
   - SnapKit (4.2.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - FMDB (~> 2.7.5)
-  - HandyJSON (~> 4.2.1)
-  - MJRefresh (~> 3.1.15.7)
-  - Moya/RxSwift (~> 12.0.1)
-  - RxCocoa (~> 4.4.0)
-  - RxSwift (~> 4.4.0)
-  - SDWebImage (~> 4.4.2)
+  - HandyJSON (~> 5.0.0)
+  - MJRefresh (~> 3.2.0)
+  - Moya/RxSwift (~> 13.0.1)
+  - RxCocoa (~> 4.5.0)
+  - RxSwift (~> 4.5.0)
+  - SDWebImage (~> 5.1.0)
   - SnapKit (~> 4.2.0)
   - SVProgressHUD (~> 2.2.5)
 
@@ -42,7 +40,6 @@ SPEC REPOS:
     - MJRefresh
     - Moya
     - Result
-    - RxAtomic
     - RxCocoa
     - RxSwift
     - SDWebImage
@@ -50,19 +47,18 @@ SPEC REPOS:
     - SVProgressHUD
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
-  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
-  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
-  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 65a9cae8837af52d3fdaa440a11c2c66337454a5
+PODFILE CHECKSUM: 9ae8cd6ecc0883b824aa3e2ee01108dcded644bf
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.5
