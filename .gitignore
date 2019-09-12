@@ -1,8 +1,5 @@
-# Android
-*.class
-*.apk
-
 # Xcode
+*.xcworkspace
 *.xcworkspacedata
 *.xcuserstate
 *.xcuserdatad/
@@ -10,9 +7,11 @@ xcuserdata/
 xcshareddata/
 .metadata/
 
-# Pods
-Pods/
+# CocoaPod
+Pods/*
+Podfile.lock
 
+# MacOS
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -33,6 +32,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Android
+*.class
+*.apk
 
 # Built application files
 *.apk
