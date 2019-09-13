@@ -19,7 +19,7 @@ public enum RxMJRefreshFooterState {
 
 public extension Reactive where Base: MJRefreshFooter {
     
-    public var refreshFooterState: Binder<RxMJRefreshFooterState> {
+    var refreshFooterState: Binder<RxMJRefreshFooterState> {
         return Binder(base) { footer, state in
             switch state {
             case .default:

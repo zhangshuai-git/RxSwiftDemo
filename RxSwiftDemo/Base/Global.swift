@@ -7,8 +7,7 @@
 //
 
 import Foundation
-
-let MAIN_COLOR: Int64 = 0xe18996
+import UIKit
 
 func print<T>(_ message: T, tag: String? = nil, filePath: String = #file, methodName: String = #function, lineNumber: Int = #line) {
     #if DEBUG
@@ -18,6 +17,12 @@ func print<T>(_ message: T, tag: String? = nil, filePath: String = #file, method
     let fileName = (filePath as NSString).lastPathComponent
     Swift.print("\(tag ?? date) <\(fileName)> \(methodName) [Line \(lineNumber)] \(message)")
     #endif
+}
+
+extension UIColor {
+    class var mainColor: UIColor {
+        return UIColor(hex: "#E18996")
+    }
 }
 
 
