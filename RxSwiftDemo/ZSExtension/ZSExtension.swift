@@ -43,8 +43,8 @@ extension NSObject: ZSCompatible { }
 protocol LetProtocol {}
 
 extension LetProtocol {
-    func `let`(_ closure: (Self) -> Void) {
-        closure(self)
+    func `let`<T>(_ closure: (Self) -> T) -> T {
+        return closure(self)
     }
 }
 
