@@ -38,3 +38,27 @@ import class Foundation.NSObject
 
 extension NSObject: ZSCompatible { }
 
+
+
+protocol LetProtocol {}
+
+extension LetProtocol {
+    func `let`(_ closure: (Self) -> Void) {
+        closure(self)
+    }
+}
+
+extension NSObject: LetProtocol {}
+//extension Optional: LetProtocol {}
+
+protocol AlsoProtocol {}
+
+extension AlsoProtocol {
+    func also(_ closure: (Self) -> Void) -> Self {
+        closure(self)
+        return self
+    }
+}
+
+extension NSObject: AlsoProtocol {}
+//extension Optional: AlsoProtocol {}
