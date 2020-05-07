@@ -1,9 +1,9 @@
 //
 //  ActivityIndicator.swift
-//  RxExample
+//  RxSwiftDemo
 //
-//  Created by Krunoslav Zaher on 10/18/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
+//  Created by 張帥 on 2018/12/12.
+//  Copyright © 2018 張帥. All rights reserved.
 //
 
 import RxSwift
@@ -38,7 +38,7 @@ public class ActivityIndicator : SharedSequenceConvertibleType {
     public typealias SharingStrategy = DriverSharingStrategy
 
     private let _lock = NSRecursiveLock()
-    private let _variable = Variable(0)
+    private let _variable = BehaviorRelay(value: 0)
     private let _loading: SharedSequence<SharingStrategy, Bool>
 
     public init() {
@@ -58,13 +58,13 @@ public class ActivityIndicator : SharedSequenceConvertibleType {
 
     private func increment() {
         _lock.lock()
-        _variable.value = _variable.value + 1
+        _variable.accept(_variable.value + 1)
         _lock.unlock()
     }
 
     private func decrement() {
         _lock.lock()
-        _variable.value = _variable.value - 1
+        _variable.accept(_variable.value - 1)
         _lock.unlock()
     }
 
