@@ -169,7 +169,7 @@ class HomeViewController: BaseViewController {
             .asObservable()
             .map{ [weak self] in self?.searchBar.text ?? "" }
         
-        let refrashAction: Observable<Void> = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+        let refreshAction: Observable<Void> = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .asObservable()
             .map { _ in () }
         
@@ -184,7 +184,7 @@ class HomeViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        viewModel.activate((searchAction: searchAction, headerAction: headerAction, footerAction: footerAction, refrashAction: refrashAction))
+        viewModel.activate((searchAction: searchAction, headerAction: headerAction, footerAction: footerAction, refreshAction: refreshAction))
     }
 }
 

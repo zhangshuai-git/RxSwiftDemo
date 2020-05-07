@@ -56,7 +56,7 @@ class HomeViewModel: ViewModelType {
         moreRepositoriesParams.filter{ $0.query.isEmpty }.map{ _ in "" }
     ).skip(4)
     
-    func activate(_ actions: (searchAction: Observable<String>, headerAction: Observable<String>, footerAction: Observable<String>, refrashAction:Observable<Void>)) {
+    func activate(_ actions: (searchAction: Observable<String>, headerAction: Observable<String>, footerAction: Observable<String>, refreshAction:Observable<Void>)) {
         Observable
             .merge(actions.searchAction, actions.headerAction)
             .map{ RepositoriesParams(query: $0) }
@@ -103,7 +103,7 @@ class HomeViewModel: ViewModelType {
             .bind(to: favourites)
             .disposed(by: disposeBag)
         
-        actions.refrashAction
+        actions.refreshAction
             .flatMap { [weak self] _ in
                 Observable.of(self?.dataSource.value ?? Repositories())
             }
