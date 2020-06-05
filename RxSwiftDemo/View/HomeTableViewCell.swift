@@ -96,13 +96,9 @@ class HomeTableViewCell: BaseTableViewCell {
         
         actionBtn.rx.tap
             .asObservable()
-            .map({
-                [weak self] (_) -> Bool in guard let `self` = self else { return false }
-                self.isButtonActive.toggle()
-                return self.isButtonActive
-            })
-            .bind(onNext: {
-                [weak self] in guard let `self` = self else { return }
+            .do(onNext: { [unowned self] in self.isButtonActive.toggle() })
+            .map{ [unowned self] in self.isButtonActive }
+            .bind(onNext: { [unowned self] in
                 print($0)
                 self.dataSource.value.isSubscribed = $0
                 $0 ? DatabaseService.shared.add(repository: self.dataSource.value)

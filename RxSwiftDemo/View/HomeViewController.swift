@@ -116,10 +116,7 @@ class HomeViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(Repository.self)
-            .subscribe(onNext: {
-                [weak self] in guard let `self` = self else { return }
-                self.gotoOwnerViewController(Observable.of($0.owner))
-            })
+            .subscribe(onNext: { [unowned self] in self.gotoOwnerViewController(Observable.of($0.owner)) })
             .disposed(by: disposeBag)
         
         viewModel.newData
@@ -137,24 +134,17 @@ class HomeViewController: BaseViewController {
         
         actionBtn.rx.tap
             .asObservable()
-            .bind {
-                [weak self] in guard let `self` = self else { return }
-                self.gotoFavouritesViewController(self.viewModel.favourites.asObservable())
-            }
+            .bind { [unowned self] in self.gotoFavouritesViewController(self.viewModel.favourites.asObservable()) }
             .disposed(by: disposeBag)
         
         searchBar.rx.textDidBeginEditing
             .asObservable()
-            .bind { [weak self] in guard let `self` = self else { return }
-                self.searchBar.showsCancelButton = true
-            }
+            .bind { [unowned self] in self.searchBar.showsCancelButton = true }
             .disposed(by: disposeBag)
         
         searchBar.rx.textDidEndEditing
             .asObservable()
-            .bind { [weak self] in guard let `self` = self else { return }
-                self.searchBar.showsCancelButton = false
-            }
+            .bind { [unowned self] in self.searchBar.showsCancelButton = false }
             .disposed(by: disposeBag)
         
         let searchAction: Observable<String> = searchBar.rx.text.orEmpty
@@ -179,9 +169,7 @@ class HomeViewController: BaseViewController {
                 searchBar.rx.cancelButtonClicked.asObservable(),
                 tableView.rx.didScroll.asObservable()
             )
-            .bind { [weak self] _ in
-                self?.searchBar.endEditing(true)
-            }
+            .bind { [weak self] _ in self?.searchBar.endEditing(true) }
             .disposed(by: disposeBag)
         
         viewModel.activate((searchAction: searchAction, headerAction: headerAction, footerAction: footerAction, refreshAction: refreshAction))

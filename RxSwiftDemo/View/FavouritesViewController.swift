@@ -50,10 +50,7 @@ class FavouritesViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(Repository.self)
-            .subscribe(onNext: {
-                [weak self] in guard let `self` = self else { return }
-                self.gotoOwnerViewController(Observable.of($0.owner))
-            })
+            .bind { [unowned self] in self.gotoOwnerViewController(Observable.of($0.owner)) }
             .disposed(by: disposeBag)
     }
 }

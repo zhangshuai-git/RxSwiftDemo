@@ -91,8 +91,7 @@ class OwnerViewController: BaseViewController {
     
     override func bindViewModel() {
         dataSource
-            .bind {
-                [weak self] in guard let `self` = self else { return }
+            .bind { [unowned self] in
                 self.iconImg.sd_setImage(with: URL(string: $0.avatarUrl))
                 self.titleLab.text = $0.login
                 self.detailLab.text = $0.url
