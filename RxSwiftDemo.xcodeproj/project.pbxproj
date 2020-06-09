@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		517A6C4F928248C331EA1D44 /* Pods_RxSwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC31E712D5EFFCF9A1F3E67 /* Pods_RxSwiftDemo.framework */; };
+		5B1CD1C3248F2B8C00A9FAE6 /* RxSwift+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CD1C2248F2B8C00A9FAE6 /* RxSwift+Extension.swift */; };
 		EC021E9F21F0102B0058F9E3 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC021E9E21F0102B0058F9E3 /* DatabaseService.swift */; };
 		EC021EA721F050E20058F9E3 /* TypeDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC021EA621F050E20058F9E3 /* TypeDefine.swift */; };
 		EC03452021E87CB800DDC12C /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC03451F21E87CB800DDC12C /* FavouritesViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B1CD1C2248F2B8C00A9FAE6 /* RxSwift+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extension.swift"; sourceTree = "<group>"; };
 		6CC31E712D5EFFCF9A1F3E67 /* Pods_RxSwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70551E8D4E1F661459CE6F27 /* Pods-RxSwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftDemo/Pods-RxSwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
 		900715B0799616286BBFBD70 /* Pods-RxSwiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftDemo/Pods-RxSwiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				EC1B9D9021BE8796000E2C5B /* MJRefreshFooter+Rx.swift */,
 				ECB6D89621C096CC00017274 /* Moya+HandyJSON+ZSExtension.swift */,
 				ECE4A582224B91C400A0E69B /* UIColor+Extension.swift */,
+				5B1CD1C2248F2B8C00A9FAE6 /* RxSwift+Extension.swift */,
 			);
 			path = ZSExtension;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				EC1B9D9F21BE895A000E2C5B /* HomeTableViewCell.swift in Sources */,
 				EC1B9D9521BE87CA000E2C5B /* MJRefreshHeader+Rx.swift in Sources */,
 				ECB6D89121BFCBB200017274 /* Model.swift in Sources */,
+				5B1CD1C3248F2B8C00A9FAE6 /* RxSwift+Extension.swift in Sources */,
 				EC1B9D8A21BE86CF000E2C5B /* ZSExtension.swift in Sources */,
 				EC1B9D8621BE8690000E2C5B /* Global.swift in Sources */,
 				EC1B9D6F21BE84DB000E2C5B /* HomeViewController.swift in Sources */,
