@@ -44,7 +44,7 @@ protocol ScopeFunc {}
 extension NSObject: ScopeFunc {}
 extension Optional: ScopeFunc {}
 extension ScopeFunc {
-     @inline(__always) func `let`<T>(_ closure: (Self) -> T) -> T {
+    @inline(__always) func `let`<T>(_ closure: (Self) -> T) -> T {
         return closure(self)
     }
     
