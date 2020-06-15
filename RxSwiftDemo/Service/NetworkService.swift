@@ -16,9 +16,7 @@ class NetworkService {
     private init() {
         isShowIndicator
             .asObservable()
-            .subscribe(onNext: {
-                $0 ? SVProgressHUD.show() : SVProgressHUD.dismiss()
-            })
+            .subscribe(onNext: { $0 ? SVProgressHUD.show() : SVProgressHUD.dismiss() })
             .disposed(by: disposeBag)
     }
     
