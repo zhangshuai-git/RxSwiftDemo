@@ -40,25 +40,31 @@ extension NSObject: ZSCompatible { }
 
 
 
-protocol LetProtocol {}
-
-extension LetProtocol {
-    func `let`<T>(_ closure: (Self) -> T) -> T {
+protocol ScopeFunc {}
+extension NSObject: ScopeFunc {}
+extension Optional: ScopeFunc {}
+extension ScopeFunc {
+     @inline(__always) func `let`<T>(_ closure: (Self) -> T) -> T {
         return closure(self)
     }
-}
-
-extension NSObject: LetProtocol {}
-//extension Optional: LetProtocol {}
-
-protocol AlsoProtocol {}
-
-extension AlsoProtocol {
-    func also(_ closure: (Self) -> Void) -> Self {
+    
+    @inline(__always) func also(_ closure: (Self) -> Void) -> Self {
         closure(self)
         return self
     }
 }
 
-extension NSObject: AlsoProtocol {}
-//extension Optional: AlsoProtocol {}
+extension Optional where Wrapped == String {
+    @inline(__always) func isNilOrEmpty() -> Bool {
+        return self == nil || self!.isEmpty
+    }
+    
+    @inline(__always) func orEmpty() -> String {
+        return self ?? ""
+    }
+}
+extension String {
+    @inline(__always) func isNotEmpty() -> Bool {
+        return self != ""
+    }
+}
