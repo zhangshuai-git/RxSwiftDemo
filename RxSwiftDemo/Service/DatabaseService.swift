@@ -29,9 +29,7 @@ class DatabaseService {
                 subscriber.onCompleted()
                 return Disposables.create()
             })
-            .flatMapLatest {
-                self.getAllRepository()
-            }
+            .flatMapLatest { self.getAllRepository() }
             .bind(to: repositories)
             .disposed(by: disposeBag)
     }
@@ -44,9 +42,7 @@ class DatabaseService {
                 subscriber.onCompleted()
                 return Disposables.create()
             })
-            .flatMapLatest {
-                self.getAllRepository()
-            }
+            .flatMapLatest { self.getAllRepository() }
             .bind(to: repositories)
             .disposed(by: disposeBag)
     }
@@ -54,10 +50,7 @@ class DatabaseService {
     private func getAllRepository() -> Observable<[Repository]> {
         return Observable
             .from(DatabaseAPI.shared.getAllRepository())
-            .map({
-                $0.isSubscribed = true
-                return $0
-            })
+            .do(onNext: { $0.isSubscribed = true })
             .toArray()
             .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .default))
             .observeOn(MainScheduler.instance)
