@@ -110,9 +110,7 @@ class HomeViewController: BaseViewController {
         viewModel.dataSource
             .map { $0.totalCount == 0 }
             .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] _ in
-                self?.tableView.zs.reloadData(withEmpty: self?.emptyView)
-            })
+            .subscribe(onNext: { [unowned self] _ in self.tableView.zs.reloadData(withEmpty: self.emptyView) })
             .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(Repository.self)
