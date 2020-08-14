@@ -26,8 +26,10 @@ class NetworkService {
     
     private lazy var isShowIndicator : Driver<Bool> = indicator.asDriver()
     
+    let moya = MoyaProvider<GitHubAPI>()
+    
     func searchRepositories(_ params:RepositoriesParams) -> Observable<Repositories> {
-        return GitHubProvider.rx
+        return moya.rx
             .request(.repositories(params.toJSON() ?? [:]))
             .trackActivity(indicator)
             .asObservable()

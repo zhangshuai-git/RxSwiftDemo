@@ -11,8 +11,6 @@ import Moya
 
 let PER_PAGE:UInt = 10
 
-let GitHubProvider = MoyaProvider<GitHubAPI>()
-
 public enum GitHubAPI {
     /**
      GET /search/repositories
