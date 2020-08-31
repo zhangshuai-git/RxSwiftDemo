@@ -9,6 +9,7 @@
 import RxSwift
 import RxCocoa
 import Moya
+import Alamofire
 import SVProgressHUD
 
 class NetworkService {
@@ -26,7 +27,22 @@ class NetworkService {
     
     private lazy var isShowIndicator : Driver<Bool> = indicator.asDriver()
     
-    let moya = MoyaProvider<GitHubAPI>()
+    private var manager: Alamofire.SessionManager {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 10
+        let manager = Alamofire.SessionManager(configuration: configuration)
+        return manager
+    }
+
+    private var plugins: [PluginType] {
+        var plugins: [PluginType] = []
+        #if DEBUG
+//        plugins.append(NetworkLoggerPlugin(verbose: true))
+        #endif
+        return plugins
+    }
+
+    private lazy var moya = MoyaProvider<GitHubAPI>(manager: manager, plugins: plugins)
     
     func searchRepositories(_ params:RepositoriesParams) -> Observable<Repositories> {
         return moya.rx
