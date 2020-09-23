@@ -120,14 +120,14 @@ class HomeViewController: BaseViewController {
         viewModel.newData
             .map{ _ in false }
             .asDriver(onErrorJustReturn: false)
-            .drive(tableView.mj_header.rx.isRefreshing)
+            .drive(tableView.mj_header!.rx.isRefreshing)
             .disposed(by: disposeBag)
         
         Observable
             .merge(viewModel.newData.map(footerState), viewModel.moreData.map(footerState))
             .startWith(.hidden)
             .asDriver(onErrorJustReturn: .hidden)
-            .drive(tableView.mj_footer.rx.refreshFooterState)
+            .drive(tableView.mj_footer!.rx.refreshFooterState)
             .disposed(by: disposeBag)
         
         actionBtn.rx.tap
@@ -149,13 +149,13 @@ class HomeViewController: BaseViewController {
             .debounce(1.0, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
         
-        let headerAction: Observable<String> = tableView.mj_header.rx.refreshing
+        let headerAction: Observable<String> = tableView.mj_header!.rx.refreshing
             .asObservable()
-            .map{ [weak self] in self?.searchBar.text ?? "" }
+            .map{ [unowned self] in self.searchBar.text ?? "" }
         
-        let footerAction: Observable<String> = tableView.mj_footer.rx.refreshing
+        let footerAction: Observable<String> = tableView.mj_footer!.rx.refreshing
             .asObservable()
-            .map{ [weak self] in self?.searchBar.text ?? "" }
+            .map{ [unowned self] in self.searchBar.text ?? "" }
         
         let refreshAction: Observable<Void> = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .asObservable()
@@ -167,7 +167,7 @@ class HomeViewController: BaseViewController {
                 searchBar.rx.cancelButtonClicked.asObservable(),
                 tableView.rx.didScroll.asObservable()
             )
-            .bind { [weak self] _ in self?.searchBar.endEditing(true) }
+            .bind { [unowned self] _ in self.searchBar.endEditing(true) }
             .disposed(by: disposeBag)
         
         viewModel.activate((searchAction: searchAction, headerAction: headerAction, footerAction: footerAction, refreshAction: refreshAction))
